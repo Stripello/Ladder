@@ -2,35 +2,36 @@
 
 namespace Ladder
 {
-    class Outputer
+    class Ladder
     {
-        internal static void Output(uint input)
+        internal static string Build(uint input)
         {
-            
+            string answer = "";
             for (uint i = 1; i <= input; i++)
             {
                 for (uint j = 0; j < i; j++)
                 {
-                    Console.Write('*');
+                    answer +='*';
                 }
-                Console.Write('\n');
+                answer += '\n';
             }
 
-            Console.Write('\n');
+            answer += '\n';
             if (input % 2 == 0) { input++; }
 
             for (uint i = 0; i<= input/2; i++)
             {
                 for (uint j = 0; j < input/2-i; j++)
                 {
-                    Console.Write(' ');
+                    answer += ' ';
                 }
                 for (uint j = 1; j <= i*2+1; j++)
                 {
-                    Console.Write('*');
+                    answer += '*';
                 }
-                Console.Write('\n');
+                answer += '\n';
             }
+            return answer;
         }
     }
 }
