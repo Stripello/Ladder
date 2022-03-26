@@ -1,37 +1,39 @@
 ﻿using System;
+using System.Text;
 
 namespace Ladder
 {
-    class Ladder
+    internal static class Ladder
     {
         internal static string Build(uint input)
         {
-            string answer = "";
+            int n = (int)input;
+            var answer = new StringBuilder ((1+n)*n/2 + n + 1 + (n/2+1)^2 - (n/2)*(n/2+1) + n);
             for (uint i = 1; i <= input; i++)
             {
                 for (uint j = 0; j < i; j++)
                 {
-                    answer +='*';
+                    answer.Append('*'); // +(1+n)*n/2 symbols
                 }
-                answer += '\n';
-            }
+                answer.Append('\n'); // +n symbols
+            }                                
 
-            answer += '\n';
+            answer.Append('\n'); // +1 symbols
             if (input % 2 == 0) { input++; }
 
             for (uint i = 0; i<= input/2; i++)
             {
                 for (uint j = 0; j < input/2-i; j++)
                 {
-                    answer += ' ';
+                    answer.Append(' ');
                 }
                 for (uint j = 1; j <= i*2+1; j++)
                 {
-                    answer += '*';
+                    answer.Append('*');  //+(n/2+1)^2 -(n/2)*(n/2+1) symbols
                 }
-                answer += '\n';
+                answer.Append('\n'); //+n symbols
             }
-            return answer;
+            return answer.ToString();
         }
     }
 }
