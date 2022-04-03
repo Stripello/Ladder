@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 namespace Ladder
 {
@@ -8,7 +7,7 @@ namespace Ladder
         internal static string Build(uint input)
         {
             int n = (int)input;
-            var answer = new StringBuilder ((1+n)*n/2 + n + 1 + (n/2+1)^2 - (n/2)*(n/2+1) + n);
+            var answer = new StringBuilder ((1+n)*n/2 + n + 1 + (n+1)*(n/2) - (n+1)*(n+1)/8 + n/2+1);
             for (uint i = 1; i <= input; i++)
             {
                 for (uint j = 0; j < i; j++)
@@ -29,9 +28,9 @@ namespace Ladder
                 }
                 for (uint j = 1; j <= i*2+1; j++)
                 {
-                    answer.Append('*');  //+(n/2+1)^2 -(n/2)*(n/2+1) symbols
+                    answer.Append('*');  //aproximately +(n/2+1)^2 -(n+1)*(n+1)/8  symbols
                 }
-                answer.Append('\n'); //+n symbols
+                answer.Append('\n'); //+n/2+1 symbols
             }
             return answer.ToString();
         }
